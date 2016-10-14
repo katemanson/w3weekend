@@ -1,7 +1,12 @@
 require_relative('./models/film')
 require_relative('./models/customer')
 require_relative('./models/ticket')
+require_relative('./db/sql_runner')
 require('pry-byebug')
+
+Ticket.delete_all
+Film.delete_all
+Customer.delete_all
 
 film1 = Film.new({'title' => "The Girl on the Train", 'price' => 11.00})
 film1.save
