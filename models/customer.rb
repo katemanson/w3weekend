@@ -15,17 +15,22 @@ class Customer
     @id = customer['id'].to_i
   end
 
-  def delete()
-    sql = "DELETE FROM customers WHERE id = #{@id}"
-    SqlRunner.run(sql)
-  end
-
   def update()
     sql = "UPDATE customers SET
       name = '#{@name}',
       funds = #{@funds}
       WHERE id = #{@id}"
     return SqlRunner.run(sql).first
+  end
+
+  def delete()
+    sql = "DELETE FROM customers WHERE id = #{@id}"
+    SqlRunner.run(sql)
+  end
+
+  def number_of_tickets_bought()
+    sql = "SELECT COUNT(t.customer_id) FROM tickets t WHERE t.customer_id = #{@id}"
+    return SqlRunner.run(sql).first['count'].to_i
   end
 
   def self.all()
@@ -38,10 +43,11 @@ class Customer
     return Customer.map_to_object(sql)
   end
 
-  def self.find_by_name(name)
-    sql = "SELECT * FROM customers WHERE name = #{'name'}"
-    return Customer.map_to_object(sql)
-  end
+  # def self.find_by_name(name)
+  #   sql = "SELECT * FROM customers WHERE name = #{'name'}"
+  #   return Customer.map_to_object(sql)
+  # end
+  # # name needs to be passed in in inverted commas -- any way round this?
 
   def self.delete_all()
     sql = "DELETE FROM customers"

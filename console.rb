@@ -25,27 +25,27 @@ film7.save
 film8 = Film.new({'title' => "The Talented Mr Ripley", 'price' => 8.00})
 film8.save
 
-customer01 = Customer.new({'name' => "Ronald", 'funds' => 35})
-customer01.save
-customer02 = Customer.new({'name' => "David", 'funds' => 50})
-customer02.save
-customer03 = Customer.new({'name' => "Ali", 'funds' => 40})
-customer03.save
-customer04 = Customer.new({'name' => "John", 'funds' => 70})
-customer04.save
-customer05 = Customer.new({'name' => "Bill", 'funds' => 30})
-customer05.save
-customer06 = Customer.new({'name' => "Evie", 'funds' => 75})
-customer06.save
-customer07 = Customer.new({'name' => "Yasmin", 'funds' => 25})
-customer07.save
-customer08 = Customer.new({'name' => "Tamsin", 'funds' => 40})
-customer08.save
-customer09 = Customer.new({'name' => "Wray", 'funds' => 55})
-customer09.save
+customer1 = Customer.new({'name' => "Ronald", 'funds' => 35})
+customer1.save
+customer2 = Customer.new({'name' => "David", 'funds' => 50})
+customer2.save
+customer3 = Customer.new({'name' => "Ali", 'funds' => 40})
+customer3.save
+customer4 = Customer.new({'name' => "John", 'funds' => 70})
+customer4.save
+customer5 = Customer.new({'name' => "Bill", 'funds' => 30})
+customer5.save
+customer6 = Customer.new({'name' => "Evie", 'funds' => 75})
+customer6.save
+customer7 = Customer.new({'name' => "Yasmin", 'funds' => 25})
+customer7.save
+customer8 = Customer.new({'name' => "Tamsin", 'funds' => 40})
+customer8.save
+customer9 = Customer.new({'name' => "Wray", 'funds' => 55})
+customer9.save
 customer10 = Customer.new({'name' => "Aimee", 'funds' => 30})
 customer10.save
-customer11 = Customer.new({'name' => "Calum", 'funds' => 12})
+customer11 = Customer.new({'name' => "Calum", 'funds' => 10})
 customer11.save
 customer12 = Customer.new({'name' => "Ruaridh", 'funds' => 60})
 customer12.save
@@ -56,113 +56,115 @@ customer14.save
 customer15 = Customer.new({'name' => "Neil", 'funds' => 93})
 customer15.save
 
-ticket001 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer01.id})
-ticket002 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer01.id})
-ticket003 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer01.id})
-ticket004 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer01.id})
-ticket005 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer01.id})
-ticket006 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer01.id})
-ticket007 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer02.id})
-ticket008 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer02.id})
-ticket009 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer02.id})
-ticket010 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer02.id})
-ticket011 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer03.id})
-ticket012 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer03.id})
-ticket013 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer03.id})
-ticket014 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer04.id})
-ticket015 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer04.id})
-ticket016 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer04.id})
-ticket017 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer04.id})
-ticket018 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer04.id})
-ticket019 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer04.id})
-ticket020 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer04.id})
-ticket021 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer04.id})
-ticket022 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer05.id})
-ticket023 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer05.id})
-ticket024 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer05.id})
-ticket025 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer05.id})
-ticket026 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer06.id})
-ticket027 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer07.id})
-ticket028 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer07.id})
-ticket029 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer08.id})
-ticket030 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer08.id})
-ticket031 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer08.id})
-ticket032 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer08.id})
-ticket033 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer09.id})
-ticket034 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer09.id})
-ticket035 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer09.id})
-ticket036 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer10.id})
-ticket037 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer10.id})
-ticket038 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer10.id})
-ticket039 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer10.id})
-ticket040 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer10.id})
-ticket041 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer11.id})
-ticket042 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer11.id})
-ticket043 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer12.id})
-ticket044 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer12.id})
-ticket045 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer12.id})
-ticket046 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer13.id})
-ticket047 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer13.id})
-ticket048 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer14.id})
-ticket049 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer14.id})
-ticket050 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer15.id})
-ticket051 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer15.id})
-ticket052 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer15.id})
-ticket053 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer15.id})
+ticket1 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer1.id})
+ticket2 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer1.id})
+ticket3 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer1.id})
+ticket4 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer1.id})
+ticket5 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer1.id})
+ticket6 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer1.id})
+ticket7 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer2.id})
+ticket8 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer2.id})
+ticket9 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer2.id})
+ticket10 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer2.id})
+ticket11 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer3.id})
+ticket12 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer3.id})
+ticket13 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer3.id})
+ticket14 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer4.id})
+ticket15 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer4.id})
+ticket16 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer4.id})
+ticket17 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer4.id})
+ticket18 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer4.id})
+ticket19 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer4.id})
+ticket20 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer4.id})
+ticket21 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer4.id})
+ticket22 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer5.id})
+ticket23 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer5.id})
+ticket24 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer5.id})
+ticket25 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer5.id})
+ticket26 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer6.id})
+ticket27 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer7.id})
+ticket28 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer7.id})
+ticket29 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer8.id})
+ticket30 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer8.id})
+ticket31 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer8.id})
+ticket32 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer8.id})
+ticket33 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer9.id})
+ticket34 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer9.id})
+ticket35 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer9.id})
+ticket36 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer10.id})
+ticket37 = Ticket.new({'film_id' => film2.id, 'customer_id' => customer10.id})
+ticket38 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer10.id})
+ticket39 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer10.id})
+ticket40 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer10.id})
+ticket41 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer11.id})
+ticket42 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer11.id})
+ticket43 = Ticket.new({'film_id' => film3.id, 'customer_id' => customer12.id})
+ticket44 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer12.id})
+ticket45 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer12.id})
+ticket46 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer13.id})
+ticket47 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer13.id})
+ticket48 = Ticket.new({'film_id' => film5.id, 'customer_id' => customer14.id})
+ticket49 = Ticket.new({'film_id' => film6.id, 'customer_id' => customer14.id})
+ticket50 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer15.id})
+ticket51 = Ticket.new({'film_id' => film4.id, 'customer_id' => customer15.id})
+ticket52 = Ticket.new({'film_id' => film7.id, 'customer_id' => customer15.id})
+ticket53 = Ticket.new({'film_id' => film8.id, 'customer_id' => customer15.id})
 
-ticket001.save
-ticket002.save
-ticket003.save
-ticket004.save
-ticket005.save
-ticket006.save
-ticket007.save
-ticket008.save
-ticket009.save
-ticket010.save
-ticket011.save
-ticket012.save
-ticket013.save
-ticket014.save
-ticket015.save
-ticket016.save
-ticket017.save
-ticket018.save
-ticket019.save
-ticket020.save
-ticket021.save
-ticket022.save
-ticket023.save
-ticket024.save
-ticket025.save
-ticket026.save
-ticket027.save
-ticket028.save
-ticket029.save
-ticket030.save
-ticket031.save
-ticket032.save
-ticket033.save
-ticket034.save
-ticket035.save
-ticket036.save
-ticket037.save
-ticket038.save
-ticket039.save
-ticket040.save
-ticket041.save
-ticket042.save
-ticket043.save
-ticket044.save
-ticket045.save
-ticket046.save
-ticket047.save
-ticket048.save
-ticket049.save
-ticket050.save
-ticket051.save
-ticket052.save
-ticket053.save
+ticket1.save
+ticket2.save
+ticket3.save
+ticket4.save
+ticket5.save
+ticket6.save
+ticket7.save
+ticket8.save
+ticket9.save
+ticket10.save
+ticket11.save
+ticket12.save
+ticket13.save
+ticket14.save
+ticket15.save
+ticket16.save
+ticket17.save
+ticket18.save
+ticket19.save
+ticket20.save
+ticket21.save
+ticket22.save
+ticket23.save
+ticket24.save
+ticket25.save
+ticket26.save
+ticket27.save
+ticket28.save
+ticket29.save
+ticket30.save
+ticket31.save
+ticket32.save
+ticket33.save
+ticket34.save
+ticket35.save
+ticket36.save
+ticket37.save
+ticket38.save
+ticket39.save
+ticket40.save
+ticket41.save
+ticket42.save
+ticket43.save
+ticket44.save
+ticket45.save
+ticket46.save
+ticket47.save
+ticket48.save
+ticket49.save
+ticket50.save
+ticket51.save
+ticket52.save
+ticket53.save
+
+# film1.ticket_sale(5)
 
 binding.pry
 nil

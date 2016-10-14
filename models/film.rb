@@ -28,6 +28,24 @@ class Film
     SqlRunner.run(sql)
   end
 
+  def ticket_sale(customer_id)
+    customer = Customer.find_by_id(customer_id)
+    if customer.funds > @price
+      customer.funds -= @price
+      customer.update
+      new_ticket = Ticket.new({'film_id' => @id, 'customer_id' => customer_id})
+      new_ticket.save
+      return new_ticket
+    else
+      return 'Insufficient funds.'
+    end
+  end
+
+  def number_of_tickets_sold()
+    sql = "SELECT COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id}"
+    return SqlRunner.run(sql).first['count'].to_i
+  end
+
   def self.all()
     sql = "SELECT * FROM films"
     return Film.map_to_objects(sql)
@@ -38,10 +56,11 @@ class Film
     return Film.map_to_object(sql)
   end
 
-  def self.find_by_title(title)
-    sql = "SELECT * FROM films WHERE title = #{'title'}"
-    return Film.map_to_object(sql)
-  end
+  # def self.find_by_title(title)
+  #   sql = "SELECT * FROM films WHERE title = #{'title'}"
+  #   return Film.map_to_object(sql)
+  # end
+  # # title needs to be passed in in inverted commas -- any way round this?
 
   def self.delete_all()
     sql = "DELETE from films"

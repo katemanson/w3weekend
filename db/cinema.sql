@@ -16,6 +16,6 @@ CREATE TABLE customers(
 
 CREATE TABLE tickets(
   id SERIAL4 PRIMARY KEY,
-  film_id INT4 REFERENCES films ON DELETE CASCADE, -- so... delete a film, ticket records for that customer are also deleted -- not good?
+  film_id INT4 REFERENCES films, -- ON DELETE CASCADE, so... delete a film, ticket records for that customer are also deleted - not good?
   customer_id INT4 REFERENCES customers ON DELETE CASCADE -- as above, but for deleting customers -- also not good?
 );
