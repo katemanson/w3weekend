@@ -5,7 +5,7 @@ DROP TABLE customers;
 CREATE TABLE films(
   id SERIAL4 PRIMARY KEY,
   title VARCHAR(255),
-  price DECIMAL(4,2) -- ? Data type (http://www.w3schools.com/sql/sql_datatypes_general.asp)
+  price DECIMAL(4,2) -- ? Data type (current choice based on http://www.w3schools.com/sql/sql_datatypes_general.asp)
 );
 
 CREATE TABLE customers(
@@ -16,6 +16,8 @@ CREATE TABLE customers(
 
 CREATE TABLE tickets(
   id SERIAL4 PRIMARY KEY,
-  film_id INT4 REFERENCES films, -- ON DELETE CASCADE, so... delete a film, ticket records for that customer are also deleted - not good?
-  customer_id INT4 REFERENCES customers ON DELETE CASCADE -- as above, but for deleting customers -- also not good?
+  film_id INT4 REFERENCES films ON DELETE CASCADE,
+  -- so... deleting any or all films means ticket records are also deleted - not good, but alternative is having no way to delete films for which tickets have been sold?
+  customer_id INT4 REFERENCES customers ON DELETE CASCADE
+  -- as above, but for deleting customers?
 );

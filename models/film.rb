@@ -28,16 +28,17 @@ class Film
     SqlRunner.run(sql)
   end
 
-  def ticket_sale(customer_id)
+  # Not totally sure this method is in the right class (could go in Ticket, with film_id and customer_id as parameters)?
+  def ticket_sale(customer_id)  
     customer = Customer.find_by_id(customer_id)
     if customer.funds > @price
       customer.funds -= @price
       customer.update
       new_ticket = Ticket.new({'film_id' => @id, 'customer_id' => customer_id})
       new_ticket.save
-      return new_ticket
+      return new_ticket, customer
     else
-      return 'Insufficient funds.'
+      return "No sale: customer hasn't enough money."
     end
   end
 
