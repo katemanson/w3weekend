@@ -51,19 +51,20 @@ class Film
 
   end
 
-  # is this right - don't need an inner join?
+  # is this right - doesn't need an inner join?
   def number_of_tickets_sold()
     sql = "SELECT t.start_time, COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id}"
     return SqlRunner.run(sql).first['count'].to_i
   end
 
-  def tickets_sold_by_start_time()
+  def tickets_sold_for_each_start_time()
     sql = "SELECT t.start_time, COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id} GROUP BY t.start_time"
-    result = SqlRunner.run(sql)
-    return result.map { |item| item }
+    result1 = SqlRunner.run(sql).map { |item| item }
+    result2 = result1.map { |item| item.values }
+    return result2.map { |time, number| [time, number.to_i] }
   end
 
-  # returns film's audience, i.e. customers who have bought a ticket for it; DISTINCT omits duplicates (which occur where a customer has bought more than one ticket to the film); could do the same by adding GROUP BY c.id at the end, though order of results is a little different then
+  # returns film's audience, i.e. customers who have bought a ticket for it; DISTINCT omits duplicates (which occur where a customer has bought more than one ticket to the film); could do the same by adding ```GROUP BY c.id``` at the end, though order of results is slightly different then
   def customers()
     sql = "SELECT DISTINCT c.* FROM customers c 
       INNER JOIN tickets t ON c.id = t.customer_id 
