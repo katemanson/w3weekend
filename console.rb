@@ -164,7 +164,7 @@ ticket51.save
 ticket52.save
 ticket53.save
 
-# film1.tickets_sold_by_start_time
+# film1.takings
 
 binding.pry
 nil

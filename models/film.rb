@@ -1,7 +1,7 @@
 class Film
 
   attr_reader :id
-  attr_accessor :title, :price
+  attr_accessor :title, :price, :capacity
 
   def initialize(options)
     @id = options['id'].to_i if options['id'] != 0
@@ -11,7 +11,7 @@ class Film
   end
 
   def save()
-    sql = "INSERT INTO films (title, price) VALUES ('#{@title}', '#{@price}') RETURNING *"
+    sql = "INSERT INTO films (title, price, capacity) VALUES ('#{@title}', #{@price}, #{@capacity}) RETURNING *"
     film = SqlRunner.run(sql).first
     @id = film['id'].to_i
   end
@@ -19,7 +19,8 @@ class Film
   def update()
     sql = "UPDATE films SET
       title = '#{@title}', 
-      price = #{@price}
+      price = #{@price},
+      capacity = #{@capacity}
       WHERE id = #{@id}"
     return SqlRunner.run(sql).first
   end
@@ -57,14 +58,22 @@ class Film
     return SqlRunner.run(sql).first['count'].to_i
   end
 
+  # bit messy...
   def tickets_sold_for_each_start_time()
     sql = "SELECT t.start_time, COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id} GROUP BY t.start_time"
-    result1 = SqlRunner.run(sql).map { |item| item }
+    result1 = SqlRunner.run(sql).map { |item| item }  # stop here?
     result2 = result1.map { |item| item.values }
     return result2.map { |time, number| [time, number.to_i] }
   end
 
-  # returns film's audience, i.e. customers who have bought a ticket for it; DISTINCT omits duplicates (which occur where a customer has bought more than one ticket to the film); could do the same by adding ```GROUP BY c.id``` at the end, though order of results is slightly different then
+  def takings
+    sql = "SELECT COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id}"
+    number_of_tickets_sold = SqlRunner.run(sql).first['count'].to_i
+    takings = number_of_tickets_sold * @price
+    return takings    
+  end
+
+  # returns film's audience, i.e. customers who have bought a ticket for it; DISTINCT omits duplicates (where a customer has bought more than one ticket to the film); could do the same by adding ```GROUP BY c.id``` at the end (?though order of results is slightly different then?)
   def customers()
     sql = "SELECT DISTINCT c.* FROM customers c 
       INNER JOIN tickets t ON c.id = t.customer_id 
@@ -82,6 +91,13 @@ class Film
     films = Film.all
     return films.map { |film| { film.title => film.number_of_tickets_sold 
     } }
+  end
+
+  def self.total_takings
+    films = Film.all
+    films_takings = films.map { |film| film.takings }
+    total_takings = films_takings.inject { |sum, amount| sum + amount }
+    return total_takings
   end
 
   def self.find_by_id(id)
