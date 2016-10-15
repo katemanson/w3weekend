@@ -1,11 +1,12 @@
-DROP TABLE tickets;
-DROP TABLE films;
-DROP TABLE customers;
+DROP TABLE IF EXISTS tickets;
+DROP TABLE IF EXISTS films;
+DROP TABLE IF EXISTS customers;
 
 CREATE TABLE films(
   id SERIAL4 PRIMARY KEY,
   title VARCHAR(255),
-  price DECIMAL(4,2) -- ? Data type (current choice based on http://www.w3schools.com/sql/sql_datatypes_general.asp)
+  price DECIMAL(4,2), -- ? Data type (current choice based on http://www.w3schools.com/sql/sql_datatypes_general.asp)
+  capacity INT2
 );
 
 CREATE TABLE customers(

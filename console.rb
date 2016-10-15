@@ -8,21 +8,21 @@ Ticket.delete_all
 Film.delete_all
 Customer.delete_all
 
-film1 = Film.new({'title' => "The Girl on the Train", 'price' => 11.00})
+film1 = Film.new({'title' => "The Girl on the Train", 'price' => 11.00, 'capacity' => 19})
 film1.save
-film2 = Film.new({'title' => "War on Everyone", 'price' => 10.00})
+film2 = Film.new({'title' => "War on Everyone", 'price' => 10.00, 'capacity' => 23})
 film2.save
-film3 = Film.new({'title' => "Supersonic", 'price' => 9.00})
+film3 = Film.new({'title' => "Supersonic", 'price' => 9.00, 'capacity' => 14})
 film3.save
-film4 = Film.new({'title' => "Swiss Army Man", 'price' => 7.50})
+film4 = Film.new({'title' => "Swiss Army Man", 'price' => 7.50, 'capacity' => 18})
 film4.save
-film5 = Film.new({'title' => "The Beatles: Eight Days a Week", 'price' => 7.00})
+film5 = Film.new({'title' => "The Beatles: Eight Days a Week", 'price' => 7.00, 'capacity' => 10})
 film5.save
-film6 = Film.new({'title' => "Queen of Katwe", 'price' => 12.00})
+film6 = Film.new({'title' => "Queen of Katwe", 'price' => 12.00, 'capacity' => 25})
 film6.save
-film7 = Film.new({'title' => "Bolshoi Ballet: The Golden Age", 'price' => 14.00})
+film7 = Film.new({'title' => "Bolshoi Ballet: The Golden Age", 'price' => 14.00, 'capacity' => 15})
 film7.save
-film8 = Film.new({'title' => "The Talented Mr Ripley", 'price' => 8.00})
+film8 = Film.new({'title' => "The Talented Mr Ripley", 'price' => 8.00, 'capacity' => 20})
 film8.save
 
 customer1 = Customer.new({'name' => "Ronald", 'funds' => 35})

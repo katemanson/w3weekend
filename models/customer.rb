@@ -28,9 +28,16 @@ class Customer
     SqlRunner.run(sql)
   end
 
+  # is this right - don't need an inner join?
   def number_of_tickets_bought()
     sql = "SELECT COUNT(t.customer_id) FROM tickets t WHERE t.customer_id = #{@id}"
     return SqlRunner.run(sql).first['count'].to_i
+  end
+
+  # returns films customer has bought tickets for; DISTINCT omits duplicates (which occur where a customer has bought more than one ticket to the film); could do the same by adding GROUP BY f.id at the end, though order of results is a little different then
+  def films()
+    sql = "SELECT DISTINCT f.* FROM films f INNER JOIN tickets t ON f.id = t.film_id WHERE t.customer_id = #{@id}"
+    return Film.map_to_objects(sql)
   end
 
   def self.all()
