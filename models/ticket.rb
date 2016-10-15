@@ -1,16 +1,17 @@
 class Ticket
 
   attr_reader :id
-  attr_accessor :film_id, :customer_id
+  attr_accessor :film_id, :customer_id, :start_time
 
   def initialize(options)
     @id = options['id'].to_i if options['id'] != 0
     @film_id = options['film_id'].to_i
     @customer_id = options['customer_id'].to_i
+    @start_time = options['start_time'].to_s
   end
 
   def save()
-    sql = "INSERT INTO tickets (film_id, customer_id) VALUES ('#{@film_id}', '#{@customer_id}') RETURNING *"
+    sql = "INSERT INTO tickets (film_id, customer_id, start_time) VALUES ('#{@film_id}', '#{@customer_id}', '#{@start_time}') RETURNING *"
     ticket = SqlRunner.run(sql).first
     @id = ticket['id'].to_i
   end
@@ -18,8 +19,9 @@ class Ticket
   def update()
     sql = "UPDATE tickets SET
       film_id = #{@film_id},
-      customer_id = #{@customer_id}
-    WHERE id = #{@id}"
+      customer_id = #{@customer_id},
+      start_time = #{@start_time}
+      WHERE id = #{@id}"
     return SqlRunner.run(sql).first
   end
 
