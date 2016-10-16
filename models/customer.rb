@@ -1,16 +1,17 @@
 class Customer
 
   attr_reader :id
-  attr_accessor :name, :funds
+  attr_accessor :name, :funds, :concession_status
 
   def initialize(options)
     @id = options['id'].to_i if options['id'] != 0
     @name = options['name']
     @funds = options['funds'].to_f
+    @concession_status = options['concession_status']
   end
 
   def save()
-    sql = "INSERT INTO customers (name, funds) VALUES ('#{@name}', '#{@funds}') RETURNING *"
+    sql = "INSERT INTO customers (name, funds, concession_status) VALUES ('#{@name}', '#{@funds}', '#{@concession_status}') RETURNING *"
     customer = SqlRunner.run(sql).first
     @id = customer['id'].to_i
   end
@@ -18,7 +19,8 @@ class Customer
   def update()
     sql = "UPDATE customers SET
       name = '#{@name}',
-      funds = #{@funds}
+      funds = #{@funds},
+      concession_status = '#{@concession_status}'
       WHERE id = #{@id}"
     return SqlRunner.run(sql).first
   end

@@ -37,15 +37,23 @@ class Film
     
     sql = "SELECT COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id}"
     tickets_sold = SqlRunner.run(sql).first['count'].to_i
+
+    if customer.concession_status == 'child'
+      price = (@price / 10) * 5
+    elsif customer.concession_status == 'senior'
+      price = (@price / 10) * 6
+    else
+      price = @price
+    end
     
-    if customer.funds >= @price && @capacity > tickets_sold
-      customer.funds -= @price
+    if customer.funds >= price && @capacity > tickets_sold
+      customer.funds -= price
       customer.update
-      # ? now that time added to ticket attributes, need to pass in a start time for new Ticket; have put in a dummy value here -- solution would be to make it an attribute of Film, as it's a customer decision (or aspect of decision to watch a particular film); means would need multiple Film objects per title?
+      # ? now that time added to ticket attributes, need to pass in a start time for new Ticket; have put in a dummy value here -- solution would be to make it an attribute of Film, as it's a customer decision (or aspect of decision to watch a particular film); means would need multiple Film objects per, um, film?
       new_ticket = Ticket.new({'film_id' => @id, 'customer_id' => customer_id, 'start_time' => "?TIME?"})
       new_ticket.save
       return new_ticket, customer
-    elsif customer.funds < @price
+    elsif customer.funds < price
       return "No sale: customer has insufficient funds."
     else
       return "No sale: film sold out."

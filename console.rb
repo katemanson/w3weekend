@@ -25,35 +25,35 @@ film7.save
 film8 = Film.new({'title' => "The Talented Mr Ripley", 'price' => 8.00, 'capacity' => 20})
 film8.save
 
-customer1 = Customer.new({'name' => "Ronald", 'funds' => 35})
+customer1 = Customer.new({'name' => "Ronald", 'funds' => 35, 'concession_status' => 'senior'})
 customer1.save
-customer2 = Customer.new({'name' => "David", 'funds' => 50})
+customer2 = Customer.new({'name' => "David", 'funds' => 50, 'concession_status' => 'adult'})
 customer2.save
-customer3 = Customer.new({'name' => "Ali", 'funds' => 40})
+customer3 = Customer.new({'name' => "Ali", 'funds' => 40, 'concession_status' => 'adult'})
 customer3.save
-customer4 = Customer.new({'name' => "John", 'funds' => 70})
+customer4 = Customer.new({'name' => "John", 'funds' => 70, 'concession_status' => 'child'})
 customer4.save
-customer5 = Customer.new({'name' => "Bill", 'funds' => 30})
+customer5 = Customer.new({'name' => "Bill", 'funds' => 30, 'concession_status' => 'adult'})
 customer5.save
-customer6 = Customer.new({'name' => "Evie", 'funds' => 75})
+customer6 = Customer.new({'name' => "Evie", 'funds' => 75, 'concession_status' => 'child'})
 customer6.save
-customer7 = Customer.new({'name' => "Yasmin", 'funds' => 25})
+customer7 = Customer.new({'name' => "Yasmin", 'funds' => 25, 'concession_status' => 'adult'})
 customer7.save
-customer8 = Customer.new({'name' => "Tamsin", 'funds' => 40})
+customer8 = Customer.new({'name' => "Tamsin", 'funds' => 40, 'concession_status' => 'child'})
 customer8.save
-customer9 = Customer.new({'name' => "Wray", 'funds' => 55})
+customer9 = Customer.new({'name' => "Wray", 'funds' => 55, 'concession_status' => 'senior'})
 customer9.save
-customer10 = Customer.new({'name' => "Aimee", 'funds' => 30})
+customer10 = Customer.new({'name' => "Aimee", 'funds' => 30, 'concession_status' => 'adult'})
 customer10.save
-customer11 = Customer.new({'name' => "Calum", 'funds' => 10})
+customer11 = Customer.new({'name' => "Calum", 'funds' => 10, 'concession_status' => 'adult'})
 customer11.save
-customer12 = Customer.new({'name' => "Ruaridh", 'funds' => 60})
+customer12 = Customer.new({'name' => "Ruaridh", 'funds' => 60, 'concession_status' => 'child'})
 customer12.save
-customer13 = Customer.new({'name' => "Sian", 'funds' => 80})
+customer13 = Customer.new({'name' => "Sian", 'funds' => 80, 'concession_status' => 'senior'})
 customer13.save
-customer14 = Customer.new({'name' => "Marni", 'funds' => 40})
+customer14 = Customer.new({'name' => "Marni", 'funds' => 40, 'concession_status' => 'senior'})
 customer14.save
-customer15 = Customer.new({'name' => "Neil", 'funds' => 93})
+customer15 = Customer.new({'name' => "Neil", 'funds' => 93, 'concession_status' => 'adult'})
 customer15.save
 
 ticket1 = Ticket.new({'film_id' => film1.id, 'customer_id' => customer1.id, 'start_time' => "19:00"})

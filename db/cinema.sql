@@ -12,7 +12,8 @@ CREATE TABLE films(
 CREATE TABLE customers(
   id SERIAL4 PRIMARY KEY,
   name VARCHAR(255),
-  funds DECIMAL(4,2)  -- ? Data type (as above)
+  funds DECIMAL(4,2),  -- ? Data type (as above)
+  concession_status VARCHAR(255)
 );
 
 CREATE TABLE tickets(
