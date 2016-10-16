@@ -18,8 +18,8 @@ CREATE TABLE customers(
 CREATE TABLE tickets(
   id SERIAL4 PRIMARY KEY,
   film_id INT4 REFERENCES films ON DELETE CASCADE,
-  -- so... deleting any or all films means ticket records are also deleted - not good, but alternative is having no way to delete films for which tickets have been sold?
+  -- ? so... deleting any or all films means ticket records are also deleted - not good, but alternative is having no way to delete films for which tickets have been sold?
   customer_id INT4 REFERENCES customers ON DELETE CASCADE, 
-  -- as above, but for deleting customers?
+  -- ? as above, but for deleting customers?
   start_time VARCHAR(255)
 );

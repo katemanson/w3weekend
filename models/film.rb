@@ -30,7 +30,7 @@ class Film
     SqlRunner.run(sql)
   end
 
-  # Not totally sure this method is in the right class (could go in Ticket, with film_id and customer_id as parameters)?
+  # ? Not totally sure this method is in the right class (could go in Ticket, with film_id and customer_id as parameters)?
   def ticket_sale(customer_id)
     
     customer = Customer.find_by_id(customer_id)
@@ -38,13 +38,14 @@ class Film
     sql = "SELECT COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id}"
     tickets_sold = SqlRunner.run(sql).first['count'].to_i
     
-    if customer.funds > @price && @capacity > tickets_sold
+    if customer.funds >= @price && @capacity > tickets_sold
       customer.funds -= @price
       customer.update
-      new_ticket = Ticket.new({'film_id' => @id, 'customer_id' => customer_id})
+      # ? now that time added to ticket attributes, need to pass in a start time for new Ticket; have put in a dummy value here -- solution would be to make it an attribute of Film, as it's a customer decision (or aspect of decision to watch a particular film); means would need multiple Film objects per title?
+      new_ticket = Ticket.new({'film_id' => @id, 'customer_id' => customer_id, 'start_time' => "?TIME?"})
       new_ticket.save
       return new_ticket, customer
-    elsif customer.funds <= @price
+    elsif customer.funds < @price
       return "No sale: customer has insufficient funds."
     else
       return "No sale: film sold out."
@@ -52,13 +53,13 @@ class Film
 
   end
 
-  # is this right - doesn't need an inner join?
+  # ? is this right - doesn't need an inner join?
   def number_of_tickets_sold()
     sql = "SELECT t.start_time, COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id}"
     return SqlRunner.run(sql).first['count'].to_i
   end
 
-  # bit messy...
+  # ? bit messy...
   def tickets_sold_for_each_start_time()
     sql = "SELECT t.start_time, COUNT(t.id) FROM tickets t WHERE t.film_id = #{@id} GROUP BY t.start_time"
     result1 = SqlRunner.run(sql).map { |item| item }  # stop here?
@@ -109,7 +110,7 @@ class Film
   #   sql = "SELECT * FROM films WHERE title = #{'title'}"
   #   return Film.map_to_object(sql)
   # end
-  # # title needs to be passed in in inverted commas - any way round this?
+  # # ? title needs to be passed in in inverted commas - any way round this?
 
   def self.delete_all()
     sql = "DELETE from films"
